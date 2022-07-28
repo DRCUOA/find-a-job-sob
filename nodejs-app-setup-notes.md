@@ -4,12 +4,6 @@
 * (c) & author Richard Clark 2022
 */ 
 
-const express = require('express');
-const app = express();
-const serverDebug = require('debug')('Server:debug-Msg');
-const databaseDebug = require('debug')('Database:debug-Msg');
-const config = require('config');
-
 /* server
 - express/http
 - configuration
