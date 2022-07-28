@@ -6,14 +6,21 @@
 
 const express = require('express');
 const app = express();
-const appDebug = require('debug')('app:debug-Msg');
+const serverDebug = require('debug')('Server:debug-Msg');
+const databaseDebug = require('debug')('Database:debug-Msg');
+const config = require('config');
 
 /* server
 - express/http
 - configuration
+-   environment (.env)
+-   config   
+-   server-side assets
+-       logs
+-       aos
 - middleware
 -   authetication
--   filesystem
+-   custom middleware
 - routing
 -   auth
 -   application
@@ -26,17 +33,5 @@ const appDebug = require('debug')('app:debug-Msg');
 -   standard-utils
 -   data-access-layer
 -       data-access-objects
-- server-side assets
--   logs
--   aos
-*/
-
-/* app
-- express/http
-- view-engine
-- scripts
-- database-connection
-
-
 
 */
