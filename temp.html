@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Node.Js BP</title>
+</head>
+
+<body>
+    <h1>Node.JS Project Structure Best Practices - in 57 easy to follows steps :-)</h1>
+    <p>Extracted from : https://www.tatvasoft.com/blog/node-js-best-practices/ on 28/07/2022 Author : Vishal Shah
+
+    </p>
+    <h2>Intro</h2>
+    <p>Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Being an asynchronous event-driven
+        JavaScript-based runtime, Node.js is widely used for building lightweight & scalable network-driven apps.
+        Node.js applications development can be up-scaled easily in both directions- horizontal as well as vertical.
+        Node js based apps are used for both client-side and server-side app. It has an open-source JavaScript runtime
+        production environment/ model that provides caching of single modules. Due to which, the popularity of Node.JS
+        in 2022 is expected to grow even more.</p>
+    <p>
+        In this blog, we will be going through some of the important best practices for programming performance using
+        node.js via relevant code examples. With the implementation of these best practices, the app automatically is
+        able to minimize JavaScript runtime errors and turn into a high-performance, robust node.js application, and
+        node process. Note that since the Node.js runtime is based on JavaScript, the standard JavaScript best practices
+        also apply on top of the coding practices mentioned in this article. These best practices are applicable and can
+        be used by Node Js development company and the entire Node.js developer community – from experts to beginners
+        writing “hello world”! Without further ado, let’s take a look at them.</p>
+
+
+    <!-- Steps -->
+    <h2>The steps</h2>
+    <ol class="main-setup">
+        <li>
+            <h3>Divide your Solution by Components</h3>
+            One of the hardest things for larger applications is to maintain a huge code base with tons of dependencies.
+            This slows down production and development while adding new features. According to Node.js best practices,
+            we should divide the entire codebase into smaller components so that each module gets its own folder, and
+            certain that each module is kept simple and small.
+        </li><br>
+        <li>
+            <h3>
+                Layering Components
+            </h3>
+            Layering is important and thus each component is designed to have ‘layers’. As a node.js best practices,
+            these layers have a dedicated object that can be used on the web, logic, and data access code. By doing
+            this, it can make a clean separation of performance issues and can significantly differentiate processes
+            from mock and test codes.
+        </li><br>
+        <li>
+            <h3>
+                Use npm in it for a New Project
+            </h3>
+            <p>
+                Npm init will automatically generate a package.json file for your project that shows all the
+                packages/node app of npm install has the information of your project.
+            </p>
+            <p>
+            <pre>
+            $ mkdir demo-node app
+            $ cd demo-node app
+            $ npm init -y 
+</pre>
+            <pre>[example:]
+                {
+            "name": "find-a-job-sob",
+            "version": "0.0.1",
+            "description": "get my cv together and find a job",
+            "main": "app.js",
+            "scripts": {
+                "test": "DEBUG=app* nodemon app.js"
+            },
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/DRCUOA/find-a-job-sob.git"
+            },
+            "keywords": [
+                "job",
+                "cv",
+                "find"
+            ],
+            "author": "drcuoa",
+            "license": "BSD-3-Clause-Clear",
+            "bugs": {
+                "url": "https://github.com/DRCUOA/find-a-job-sob/issues"
+            },
+            "homepage": "https://github.com/DRCUOA/find-a-job-sob#readme"
+            }
+</pre>
+            </p>
+        </li><br>
+        <!-- start -->
+        <li>
+            <h3>
+                Wrap Common Utilities as npm Package
+            </h3>
+            <p>
+                Larger app/project process typically has the same code used repeatedly multiple times at different
+                locations. We can combine them into a single private package files and use that package at various
+                places within our app. Npm install eliminates code duplication and makes code more manageable.
+            </p>
+        </li><br>
+        <!-- end -->
+
+        <!-- start -->
+        <li>
+            <h3>
+                Separate Express ‘app’ and ‘server’
+            </h3>
+            <p>
+                The most common mistake that many developers do in any project is to define the entire express
+                application process on huge files. Instead of doing that, we should separate the ‘Express’ definition
+                into at least two different files. One for the API declaration (app.js) and another one for the network
+                concerns. We can also locate our API declarations within multiple components.
+            </p>
+        </li><br>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Using Environment Aware, Secured and Hierarchical Configuration File
+            </h3>
+            <p>
+                As security best practices, we should keep our app-level keys easily readable from file and environment
+                variables. We should also keep secrets outside the committed code and make a config file hierarchy for
+                easier accessibility. To meet all this, a perfect and flawless configuration setup is required. There
+                are
+                few node.js development project structure that are available that can help to do this like rc, nconf and
+                config.</p>
+            <p>
+                Also, developers should leverage the power of npmrc file in their projects, which can automatically
+                restarts
+                a few environment production configurations during npm init like setting up production of metadata
+                inside
+                project package.json config file : Author name/email/licensing details/version, setting up production of
+                npm
+                registry changes, log levels, log messages output level changes, installing global modules and many
+                more.
+            </p>
+            <p>
+                Developers can set default values can be set through npmrc file with the below commands:
+
+                npm config set init.author.name "Your Name"
+                npm config set init.author.email "name.lastname@tatvasoft.com"
+                npm config set init.author.url "http://www.tatvasoft.com"
+                npm config set init.license "MIT"
+                npm config set init.version "1.0.0"
+            </p>
+            <p>
+            <pre>
+            npm config set init.author.name "Your Name"
+            npm config set init.author.email "name.lastname@tatvasoft.com"
+            npm config set init.author.url "http://www.tatvasoft.com"
+            npm config set init.license "MIT"
+            npm config set init.version "1.0.0"</pre>
+            </p>
+        </li><br>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Avoiding Garbage in-app
+            </h3>
+            <p>
+                Node js has a default limit of 1.5 GB Single CPU core as process manager but still, it uses a greedy and
+                lazy garbage collector. It waits until the memory usage is reached and gets recovered on its own.
+
+                If you want to gain more control over the garbage collector then we can set the flags on V8.
+            <pre>
+    web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100 server.js
+</pre>
+            You can also otherwise try to run the application using the Docker image. This is important if the app is
+            running in an environment with less than 1.5 GB of available memory usage. For example, if you’d like to
+            tailor a node.js to a 512 MB container, try:
+            <pre>
+    web: node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js
+</pre>
+            </p>
+        </li><br>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Hook Things Up
+            </h3>
+            <p>
+                For automation, we can make use of Npm’s lifecycle scripts to make great hooks. If we want to run
+                something before building our app, we can use preinstall script. You can use a post-install script in
+                JSON package to develop assets with a grunt, gulp and browserify or webpack of production application.
+            <pre>
+                In package.json:
+                
+                "scripts": {
+                    "postinstall": "bower install && grunt build",
+                      "start": "nf start"
+                }</pre>
+            To take hold of these scripts, you can also otherwise use an environment variable.
+            <pre>
+                "postinstall": "if $BUILD_ASSETS; then npm run build-assets; fi",
+                "build-assets": "bower install && grunt build"
+            </pre>
+            You can convert your scripts into files if they aren’t in control.
+            <pre>
+                "postinstall": "scripts/postinstall.sh"
+            </pre>
+            Scripts in package.json automatically have ./node_modules/.bin added to their PATH, so you can execute
+            binaries like bower or webpack directly.
+            </p>
+        </li>
+        <!-- end -->
+        <h2>Error Handling of the App</h2>
+        <!-- start -->
+        <li>
+            <h3>
+                Using Async-Await or Promises
+            </h3>
+            <p>
+                Good development practices say to use javascript ‘synchronous function’ for multiple callbacks inside
+                promises to handle async error this process results in a callback hell problem. We can take a look at
+                the available libraries or async and await of javascript to overcome this performance issue. The process
+                manager will use the promises function to catch code error. It reduces code complexity and makes code
+                more readable.
+            <pre>
+                Code Example –  
+                 using just cb promises
+
+                return A()
+                  .then((a) => B(a))
+                  .then((b) => C(b))
+                  .then((c) => D(c))
+                  .catch((error) => logger.error(error))
+                  .then(E())
+                
+                Code Example - 
+                  using async/await on the promise object to catch errors 
+                
+                async function E() {
+                  try {
+                    const a= await A();
+                    const b= await B(a);
+                    const c= await C(c);
+                    return await D(c);
+                  }
+                  catch(error) {
+                    logger.error(error);
+                  }
+                }
+            </pre>
+            </p>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Handling Errors Centrally (i.e. npm DEBUG)
+            </h3>
+            <p>
+                Every logic that handles errors like logging performance , sending mails regarding error should be
+                written in such a way so that all APIs, night-jobs, unit testing can debug messages and call this method
+                whenever any error occurs.
+            </p>
+        </li><br>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Validating Request Body
+
+            </h3>
+            <p>
+                Developers can use available open-source packages like Joi to ensure the request body is proper and does
+                not contain any malicious content. We can validate all the request parameters and body parameters to
+                meet the expected schema before executing actual logic. By doing so we can throw an error to the user
+                input that the requested body is not valid before executing actual logic.
+            </p>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Using Built-in Error Handling Object/Mechanism
+
+            </h3>
+            <p>
+                There are many ways otherwise available for developers to raise error and resolve them. They can use
+                strings or even define custom types. The Built-in error object makes a uniform approach to handle errors
+                within our source code and other open-source JSON packages.
+
+                It is also recommended to log errors and their names and other Meta properties of errors so that it can
+                be easily identifiable.
+            <pre>
+                // throwing an Error from typical function, whether sync or async
+                if(!productToAdd)
+                throw new Error('How can I add new product when no value provided?');
+                
+                // 'throwing' an Error from EventEmitter
+                const myEmitter = new MyEmitter();
+                myEmitter emit('error', new Error('whoops!'));
+                
+                // 'throwing' an Error from a Promise
+                const addProduct = async (productToAdd) => {
+                try {
+                const existingProduct = await DAL.getProduct (productToAdd.id);
+                if (existingProduct !== null) {
+                throw new Error('Product already exists!');
+                }
+                } catch (err) {
+                // ...
+                }
+                }
+            </pre>
+            </p>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Always Await Promises before Returning to Avoid a Partial Stacktrace
+
+            </h3>
+            <p>
+                When an error occurs, whether, from a synchronous or asynchronous flow, it’s imperative to have a full
+                stacktrace of the error flow. Surprisingly, if an async function returns a promise (e.g., calls another
+                async function) without awaiting, then an error should occur that makes the caller function disappear in
+                the stacktrace.
+
+                This will leave the person to diagnose the problem with partial information – All the more if the error
+                cause lies within that caller function then there is a feature v8, also called “zero-cost async
+                stacktraces” that allow stacktraces not to be cut on the most recent await. But due to non-trivial
+                implementation details, it will not work if the return value of a function (sync or async) is a promise.
+                So, to avoid these loopholes in stacktraces for the cases when the returned promises would get rejected.
+                So, we must always explicitly resolve these promises by waiting before returning them from the
+                functions.
+            </p>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Use Linting Packages
+            </h3>
+            <p>
+                There are many linting tools available, ESLint is one the most popular linting package which is used to
+                check possible errors in code otherwise you can also check code styles to meet best practices standards.
+                It identifies spacing issues to any potential code patterns that could lead to any security threats as
+                well as possible app-breaking that could occur in the future.
+
+                There are also other tools available that automatically format code and put it in a more readable way.
+                Also, it resolves minor syntax errors like adding semicolons at the end of each statement, etc.
+
+            <details>
+                <summary>Linting?</summary>
+                Simply put, a linter is a tool that programmatically scans your code with the goal of finding issues
+                that can lead to bugs or inconsistencies with code health and style.
+            </details>
+
+            </p>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <h3>
+                Name Your Functions
+            </h3>
+            <p>
+                You can name all the functions which may include the closures and callbacks. You can restrict the use of
+                anonymous functions. Make sure you use the Naming function. Naming will allow you to simply implement
+                what you want and then Take a snapshot of memory usage.
+            </p>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>
+            <details>
+                <summary>
+                    Proper Naming Conventions for Constants, Variables, Functions, and Classes
+                </summary>
+                As a standard best practice, we should use all constants, functions, variables, and class names in
+                lowercase when we declare them. Also, we should not use any short forms instead use only full forms that
+                are easily understandable by everyone using it. We should use underscore between two words.
+                <details>
+                    <summary>
+                        Code Example
+                    </summary>
+                    <pre>for class name we use Uppercase
+class MyClassExample {}
+// Use the const keyword and lowercase
+const conf = {
+  key: 'value'
+};
+// for variables and functions names use lowercase
+let variableExample = 'value';
+function foo() {}</pre>
+                </details>
+            </details>
+        </li>
+        <!-- end -->
+        <!-- start -->
+        <li>{seq-nbr}
+            <details>
+                <summary>
+                 {title}   
+                </summary>
+                {details}
+                <details>
+                    <summary>
+                       {code-example-title}
+                    </summary>
+                    <pre>
+                       {code-example}     
+                    </pre>
+                </details>
+            </details>
+        </li>
+        <!-- end -->
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Vishal Shah Bio:</h2>
+    <p>
+        Vishal Shah has an extensive understanding of multiple application development frameworks and holds an upper
+        hand with newer trends in order to strive and thrive in the dynamic market. He has nurtured his managerial
+        growth in both technical and business aspects and gives his expertise through his blog posts.
+    </p>
+
+
+
+</html>

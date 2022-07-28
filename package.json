@@ -1,0 +1,24 @@
+{
+  "name": "find-a-job-sob",
+  "version": "0.0.1",
+  "description": "get my cv together and find a job",
+  "main": "app.js",
+  "scripts": {
+    "test": "DEBUG=app* nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DRCUOA/find-a-job-sob.git"
+  },
+  "keywords": [
+    "job",
+    "cv",
+    "find"
+  ],
+  "author": "drcuoa",
+  "license": "BSD-3-Clause-Clear",
+  "bugs": {
+    "url": "https://github.com/DRCUOA/find-a-job-sob/issues"
+  },
+  "homepage": "https://github.com/DRCUOA/find-a-job-sob#readme"
+}
