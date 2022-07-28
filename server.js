@@ -33,5 +33,4 @@ const config = require('config');
 -   standard-utils
 -   data-access-layer
 -       data-access-objects
-
 */
